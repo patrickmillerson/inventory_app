@@ -1,0 +1,38 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}{{ item.name }} Details{% endblock %}
+
+{% block content %}
+  <div class="container mt-4 pb-4">
+    <h1 class="mb-4">{{ item.name }}</h1>
+    
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          {% if item.photo %}
+            <img src="{{ item.photo.url }}" class="img-fluid rounded-start" alt="{{ item.name }}">
+          {% else %}
+            <img src="https://via.placeholder.com/150" class="img-fluid rounded-start" alt="No Image">
+          {% endif %}
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text"><small class="text-muted">Category: {{ item.category.name }}</small></p>
+            <p class="card-text"><strong>Purchased on:</strong> {{ item.purchase_date }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ item.purchase_price }}</p>
+            <p class="card-text"><strong>Warranty Start Date:</strong> {{ item.warranty_start_date }}</p>
+            <p class="card-text"><strong>Warranty End Date:</strong> {% if item.warranty_end_date %}{{ item.warranty_end_date }}{% else %}N/A{% endif %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <a href="{% url 'items_list' %}" class="btn btn-outline-secondary">Back to Inventory</a>
+      <a href="{% url 'edit_item' item.id %}" class="btn btn-primary">Edit Item</a>
+      <a href="{% url 'delete_item' item.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete Item</a>
+    </div>
+  </div>
+{% endblock %}

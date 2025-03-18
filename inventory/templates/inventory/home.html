@@ -1,0 +1,50 @@
+{% extends 'inventory/base.html' %}
+
+{% block title %}
+  Home - MyAssetTracker
+{% endblock %}
+
+{% block content %}
+  <div class="pb-4">
+    <div class="jumbotron jumbotron-fluid bg-primary text-white">
+      <div class="container text-center">
+        <h1 class="display-4">Welcome to MyAssetTracker 📦</h1>
+        <p class="lead">Effortlessly organize and track all your household items!</p>
+      </div>
+    </div>
+
+    <div class="container mt-5 pb-4">
+      <h2 class="text-center mb-4">Why Choose MyAssetTracker?</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Log Household Items</h5>
+              <p class="card-text">Easily log and track every item in your home, from furniture to electronics.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Assign Categories</h5>
+              <p class="card-text">Organize your items by categories such as electronics, furniture, appliances, and more.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Track Warranties</h5>
+              <p class="card-text">Never miss an expiration date! Track warranties and expiration dates for each item.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5 text-center">
+      <a href="{% url 'signup' %}" class="btn btn-primary btn-lg">Get Started with MyAssetTracker</a>
+    </div>
+  </div>
+{% endblock %}
