@@ -48,6 +48,7 @@ def item_details(request, item_id):
 @login_required
 def add_item(request):
     if request.method == "POST":
+        print(request.FILES)
         form = ItemForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             item = form.save(commit=False)

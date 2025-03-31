@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from storages.backends.s3boto3 import S3Boto3Storage
 
 class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Categories belong to users
@@ -18,7 +19,7 @@ class Item(models.Model):
     warranty_start_date = models.DateField(auto_now=True)
     warranty_end_date = models.DateField(auto_now=True)
     photo = models.ImageField(upload_to='inventory_photos/', null=True, blank=True)
-
+    # photo = models.ImageField(storage='storages.backends.s3boto3.S3Boto3Storage', upload_to='inventory_photos/', null=True, blank=True)
     def __str__(self):
         return f"{self.name} ({self.user.username})"
 
